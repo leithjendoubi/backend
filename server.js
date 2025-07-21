@@ -120,6 +120,13 @@ app.use((error, req, res, next) => {
   });
 });
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://frontend-three-fawn-49.vercel.app",
+];
+app.use(cors({ origin: allowedOrigins, credentials: true }));
+
 // 404 handler
 app.use('*', (req, res) => {
   res.status(404).json({
